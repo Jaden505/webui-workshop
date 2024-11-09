@@ -1,5 +1,6 @@
 {
   "name": "webui-workshop",
+  "type": "module",
   "version": "1.0.0",
   "description": "Project template for WebUI-Workshop 2020-2022",
   "repository": {
@@ -13,10 +14,13 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon --watch index.js --watch lib --watch config.js index.js"
   },
   "dependencies": {
     "@aliceo2/web-ui": "2.7.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
 }
