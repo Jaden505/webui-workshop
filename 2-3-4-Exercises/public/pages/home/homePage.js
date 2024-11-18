@@ -1,5 +1,5 @@
-import { h } from '/js/src/index.js';
-import {info, iconPerson} from '/js/src/icons.js';
+import { h, RemoteData } from '/js/src/index.js';
+import {info, iconPerson, iconReload} from '/js/src/icons.js';
 
 export default (model) => [
   h('h1', 'Home page'),
@@ -24,4 +24,12 @@ export default (model) => [
   ]),
 
   h('label', 'User name: ' + model.homeModel.userName),
+
+  h('label', 'Greeting message: ' + model.homeModel.greetingMessage),
+
+  model.homeModel._data.isLoading() ?
+    h('div', [
+      h('i', iconReload()),
+      'Loading...'
+    ]) : null,
 ];

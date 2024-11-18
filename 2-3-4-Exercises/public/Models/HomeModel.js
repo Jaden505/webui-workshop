@@ -23,7 +23,7 @@ export default class HomeModel extends Observable {
   set userName(userName) {
     this._userName = userName;
     this.notify();
-  }
+}
 
   get data(){
     return this._data;
@@ -35,9 +35,12 @@ export default class HomeModel extends Observable {
   }
 
   async retrieveInformation(loader){
-    this.data = RemoteData.loading();
-    const {ok,result} = await loader.get(`/api/info${this.userName}`);
+    this._data = RemoteData.loading();
 
-    this._data = ok ?  this.data = RemoteData.success(result) : this.data = RemoteData.failure("No Data found");
+    setTimeout(async () => {
+      const {ok,result} = await loader.get(`/api/info${this.userName}`);
+      this._data = ok ? this.data = RemoteData.success(result) : this.data = RemoteData.failure("No Data found");
+      this._data = RemoteData.success(result);
+    }, 3000);
   }
 }
