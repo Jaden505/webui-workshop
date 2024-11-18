@@ -35,7 +35,7 @@ export default class Model extends Observable {
   handleLocationChange() {
     switch (this.router.params.page) {
       case 'home':
-        this.homeModel.retrieveInformation();
+        this.homeModel.retrieveInformation(this.loader);
         break;
       case 'about':
         break;

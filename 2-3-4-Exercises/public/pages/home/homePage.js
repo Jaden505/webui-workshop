@@ -17,11 +17,11 @@ export default (model) => [
 
   h('button.btn', {
     onclick: () => {
-      model.homeModel.setUserName('admin');
+      model.homeModel.userName = 'Alice';
     }
   }, [
     h('i', iconPerson(), ' user'),
   ]),
 
-  h('label', 'User name: ' + model.homeModel.getUserName())
+  h('label', 'User name: ' + model.homeModel.userName),
 ];

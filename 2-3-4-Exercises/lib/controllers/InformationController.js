@@ -2,7 +2,7 @@ import { InvalidInputError, updateAndSendExpressResponseFromNativeError } from "
 
 class InformationController {
     constructor(informationService) {
-        this.informationService = informationService;
+        this._informationService = informationService;
     }
     
     retrieveInformationHandler = (req, res) => {
@@ -10,9 +10,10 @@ class InformationController {
         if (!name || !name.trim()) updateAndSendExpressResponseFromNativeError(res, new InvalidInputError('Name is required'));
 
         try {
-            const information = this.informationService.getInformation(name);
+            const information = this._informationService.getInformationByUser(name);
             res.json(information);
         } catch (error) {
+            console.error(error);
             updateAndSendExpressResponseFromNativeError(res, error);
         }
     }
